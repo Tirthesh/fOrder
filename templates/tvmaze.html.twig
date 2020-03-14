@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<table class="table table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>#</th>
+					<th>Time</th>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for key,row in data %}
+				<tr>
+					<th scope="row">{{key+1}}</th>
+					<td>{{ row.airtime }}</td>
+					<td>
+						<a href="/tvmaze/showMeta/{{row.show.id}}" target="_blank">
+							<img style="height: 100px;" src="{{row.show.image.medium is defined ? row.show.image.medium : '#'}}" />
+							<br /><br />
+							{{ row.show.name }}
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

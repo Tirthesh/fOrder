@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<a href="{{data.officialSite}}" target="_blank">
+					<h3>{{ data.name }}</h3>
+					<img src="{{data.image.medium is defined ? data.image.medium : '#'}}" />
+					<br /><br />
+				</a>
+			</div>
+			<div class="col">{{data.summary|raw}}</div>
+			<div class="col">
+				<h5>Show Info:</h5>
+				<div class="row">Network: {{data.network.name|raw}}</div>
+				<div class="row">Schedule: {{data.schedule.days|join(', ', ' and ')}} @ {{data.schedule.time}} ({{data.runtime}} min)</div>
+				<div class="row">Status: {{data.status}}</div>
+				<div class="row">Show Type: {{data.type}}</div>
+				<div class="row">Genre: {{data.genres|join(' | ')}}</div>
+				<div class="row">Episodes Ordered: ~ </div>
+				<div class="row">Created By: ~</div>
+				<div class="row">Official Site: <a href="{{data.officialSite}}" target="_blank">{{data.officialSite}}</a></div>
+				<div class="row">Rating: {{data.rating.average}}</div>
+			</div>			
+		</div>
+	</div>
+{% endblock %}
